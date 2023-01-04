@@ -28,7 +28,7 @@ Test data의 변수의 수가 다르므로 이를 해소하기 위해 Knowledge 
   + 문자열 데이터인 ID 및 Component_ARBITRARY 변수 제거
   + Year 변수 제거( Year 변수는 '진단년도' 뜻하는 변수이고 진단년도가 윤활유의 품질에 영향을 미치지 않기 때문에 제거하기로 정했다. )
   + 결측치가 15%가 넘는 열 제거
-  + Train data를 6.4:1.6:2로 train data, validation data, test data로 나누기
+  + Train data를 6.4 : 1.6 : 2로 train data, validation data, test data로 나누기
   + train data에는 test data 변수 16개( ID, Component_ARBITRARY, Year 변수 제외 )와  윤활유의 품질을 잘 분류할 수 있는  AL(알루미늄 함유량)변수를 제외하고 나머지 변수들은 삭제 
     하기 
   + 데이터들이 정규분포 모양이 아니기 때문에 StandardScaler 보다는 MinMaxScaler를 이용하기
