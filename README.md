@@ -19,7 +19,7 @@
 
 ## 실험방법
 
-데이터의 클래스의 불균형이 심해 Class weight와 4가지 Sampling 기법( Smote, Smote-Tomek, ADASYN, Randomundersampling )을 적용하였다. 이 대회에서는 특이한 점이 Train data와 
+데이터의 클래스의 불균형이 심해 Class weight와 4가지 Sampling 기법( Smote, Smote-Tomek, ADASYN, Randomundersampling )을 적용하였다. 또한 이 대회에서는 특이한 점이 Train data와 
 Test data의 변수의 수가 다르므로 이를 해소하기 위해 Knowledge Distillation을 적용하였다.
 
 
