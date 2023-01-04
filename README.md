@@ -25,7 +25,7 @@ Test data의 변수의 수가 다르므로 이를 해소하기 위해 Knowledge 
 
 ## 과정
 
-### Step1 Data Load 및 간단한 전처리
+### Step 1. Data Load 및 간단한 전처리
   + train.csv 데이터만을 사용해서 진행
   + 문자열 데이터인 ID 및 Component_ARBITRARY 변수 제거
   + Year 변수 제거( Year 변수는 '진단년도' 뜻하는 변수이고 진단년도가 윤활유의 품질에 영향을 미치지 않기 때문에 제거하기로 정했다. )
@@ -35,19 +35,19 @@ Test data의 변수의 수가 다르므로 이를 해소하기 위해 Knowledge 
     하기 
   + 데이터들이 정규분포 모양이 아니기 때문에 StandardScaler 보다는 MinMaxScaler를 이용하기
    
-### Step2 다음 표와 같이 Class weight나 Sampling 기법을 이용하여 Class Imbalance 문제를 해소하기
+### Step 2. 다음 표와 같이 Class weight나 Sampling 기법을 이용하여 Class Imbalance 문제를 해소하기
  
   ![image](https://user-images.githubusercontent.com/65749318/210593094-6578d579-9b20-40b4-9109-7b7aa70cc717.png)
 
-### Step3  Teacher Model인 LightGBMClassifier 모형을 만들기
+### Step 3. Teacher Model인 LightGBMClassifier 모형을 만들기
  
   + 각 Case들을 비교하기 위해 LightGBMClassifier 모델의 파라미터를 같게 하기
  
-### Step4  Student Model인 LightGBMRegressor 모형을 만들기
+### Step 4. Student Model인 LightGBMRegressor 모형을 만들기
 
   + 각 Case들을 비교하기 위해 LightGBMRegressor 모델의 파라미터를 같게 하기
 
-### 각 Case 별 모델들의 Macro F-1 Score 값을 비교하기
+### Step 5. 각 Case 별 모델들의 Macro F-1 Score 값을 비교하기
 
 ![image](https://user-images.githubusercontent.com/65749318/210598074-18702f7e-162a-49ea-9d1d-0c9203b2d723.png)
 
