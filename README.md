@@ -1,4 +1,4 @@
-# Classification of construction machinery oil conditions by using unbalanced data sampling techniques and knowledge distillation 
+# The Construction of Classification model of machinery oil conditions by using unbalanced data sampling techniques and knowledge distillation 
 
 ## 배경
 
