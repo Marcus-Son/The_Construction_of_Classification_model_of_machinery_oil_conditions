@@ -41,11 +41,11 @@ Test data의 변수의 수가 다르므로 이를 해소하기 위해 Knowledge 
 
 ### Step 3. Teacher Model인 LightGBMClassifier 모형을 만들기
  
-  + 각 Case들을 비교하기 위해 LightGBMClassifier 모델의 파라미터를 같게 하기
+ + 각 Case들을 비교하기 위해 LightGBMClassifier 모델의 파라미터를 같게 하기
  
 ### Step 4. Student Model인 LightGBMRegressor 모형을 만들기
 
-  + 각 Case들을 비교하기 위해 LightGBMRegressor 모델의 파라미터를 같게 하기
+ + 각 Case들을 비교하기 위해 LightGBMRegressor 모델의 파라미터를 같게 하기
 
 ### Step 5. 각 Case 별 모델들의 Macro F-1 Score 값을 비교하기
 
