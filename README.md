@@ -51,6 +51,7 @@ Test data의 변수의 수가 다르므로 이를 해소하기 위해 Knowledge 
 
 ![image](https://user-images.githubusercontent.com/65749318/210598074-18702f7e-162a-49ea-9d1d-0c9203b2d723.png)
 
- + 샘플링 기법을 적용하지 않고 Class weight만 적용한 것이 가장 효과적이었다.
- + Validation data에서는 임계값이 0.35이고 Class weight만 적용했을 때 Macro F-1 Score가 가장 높았고 Test data에서는 임계값이 0.3일 때가 Macro F-1 Score가 가장 높았다.
++ 샘플링 기법을 적용하지 않고 Class weight만 적용한 것이 가장 효과적이었다.
+
++ Validation data에서는 임계값이 0.35이고 Class weight만 적용했을 때 Macro F-1 Score가 가장 높았고 Test data에서는 임계값이 0.3일 때가 Macro F-1 Score가 가장 높았다.
 
