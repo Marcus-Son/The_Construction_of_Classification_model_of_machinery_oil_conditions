@@ -55,3 +55,8 @@ Test data의 변수의 수가 다르므로 이를 해소하기 위해 Knowledge 
 
 + Validation data에서는 임계값이 0.35이고 Class weight만 적용했을 때 Macro F-1 Score가 가장 높았고 Test data에서는 임계값이 0.3일 때가 Macro F-1 Score가 가장 높았다.
 
+## 대회 사이트
+
+https://dacon.io/competitions/official/236013/overview/description
+
+
