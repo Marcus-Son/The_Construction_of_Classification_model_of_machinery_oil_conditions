@@ -13,6 +13,12 @@
 
 모델 학습시에는 주어진 모든 ID 변수를 제외한 모든 feature 53개를 다 이용할 수 있지만 진단 테스트시에는  ID 변수를 제외한 일부 18개의 feature만 사용이 가능하다. 
 본 데이콘(Dacon) 대회에서는 test data의 Y_LABEL 변수를 제공할 수 없으므로 train 데이터를 train data, validation data, test data로 6.4:1.6:2로 쪼개서 사용하였다.
+데이터 클래스에서는 윤활유의 품질이 불량인 경우와 윤활유의 품질이 좋은 경우의 비가 8.54:91.46으로 Class Imbalance(클래스 불균형)이 심하다. 
+
+## 실험방법
+
+데이터의 클래스의 불균형이 심해 Class weight와 4가지 Sampling 기법( Smote, Smote-Tomek, ADASYN, Randomundersampling )을 적용하였다. 
+
 
 
 ## 과정
@@ -22,4 +28,11 @@
   + 문자열 데이터인 ID 및 Component_ARBITRARY 변수 제거
   + Year 변수 제거( Year 변수는 '진단년도' 뜻하는 변수이고 진단년도가 윤활유의 품질에 영향을 미치지 않기 때문에 제거하기로 정했다. )
   + 결측치가 15%가 넘는 열 제거
-
+  + Train data를 6.4:1.6:2로 train data, validation data, test data로 나누기
+  + train data에는 test data 변수 16개( ID, Component_ARBITRARY, Year 변수 제외 )와  윤활유의 품질을 잘 분류할 수 있는  AL(알루미늄 함유량)변수를 제외하고 나머지 변수들은 삭제 
+    하기 
+  + 데이터들이 정규분포 모양이 아니기 때문에 StandardScaler 보다는 MinMaxScaler를 이용하기
+   
+2) Class weight나 Sampling 기법을 이용하여 Class Imbalance 문제를 해소하기
+  
+  ![image](https://user-images.githubusercontent.com/65749318/210593094-6578d579-9b20-40b4-9109-7b7aa70cc717.png)
