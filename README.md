@@ -24,15 +24,11 @@ Use only the train.csv data for the process. Remove ID variables and Component_A
 
 Step 2: Address Class Imbalance Issue with Class Weights and Sampling Techniques (as shown in the provided table)
 
-<img width="1000" alt="image" src="https://github.com/ShawnSon-hub/The_Construction_of_Classification_model_of_machinery_oil_conditions/assets/124177883/f9c0f221-4b98-4084-86b1-3be3dc672e00">
-
 Step 3: Create a Teacher Model using LightGBMClassifier Set the parameters of the LightGBMClassifier model the same for each case to facilitate comparison.
 
 Step 4: Create a Student Model using LightGBMRegressor Set the parameters of the LightGBMRegressor model the same for each case to facilitate comparison.
 
 Step 5: Compare the Macro F-1 Score values of the models for each case (as shown in the provided image)
-
-![image (1)](https://github.com/ShawnSon-hub/The_Construction_of_Classification_model_of_machinery_oil_conditions/assets/124177883/047306e5-1df9-4e98-aa54-4dc8d8cd97bd)
 
 
 - Applying class weights without using sampling techniques was the most effective approach.
