@@ -1,4 +1,4 @@
-# The Construction of Classification model of machinery oil conditions
+# Construction of a Classification model for machinery oil conditions
 
 ## Background
 
