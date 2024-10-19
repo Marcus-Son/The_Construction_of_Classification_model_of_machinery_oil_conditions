@@ -1,37 +1,58 @@
-# Construction of a Classification model for machinery oil conditions
+# Construction of a Classification Model for Machinery Oil Conditions
+
+## Table of Contents
+1. [Background](#background)
+2. [Project Objective](#project-objective)
+3. [Data Description](#data-description)
+4. [Experimental Method](#experimental-method)
+5. [Results](#results)
+6. [Conclusion](#conclusion)
 
 ## Background
+Lubricating oil is critical for the efficient functioning of machinery. It is used not only in production equipment but also in various parts of transportation vehicles like cars, trains, ships, and airplanes. The role of lubricating oil is to reduce wear and tear on machinery components, thereby prolonging the equipment's lifespan. Poor-quality oil, on the other hand, can cause significant damage and reduce the machinery’s lifespan. As a result, it is vital to detect and replace low-quality oil before it causes damage.
 
-Lubricating oil is necessary for all machinery. It is used not only in the production equipment used in factories but also in various parts and machinery components of transportation vehicles such as cars, trains, ships, and airplanes. Using lubricating oil in machinery helps prevent wear and tear. Therefore, using high-quality lubricating oil can extend the lifespan of machinery, while using poor-quality lubricating oil can shorten it. It is essential to detect and replace lubricating oil with poor quality. Hence, it is necessary to develop a lubricating oil quality classification model that can effectively detect poor-quality lubricating oil.
-
-## Topic
-
-Development of a lubricating oil quality assessment model for real-time monitoring of lubricating oil conditions in construction equipment.
+## Project Objective
+This project aims to develop a real-time lubricating oil quality assessment model for construction equipment. By doing so, the model will classify lubricating oil conditions, detecting poor-quality oil to prevent mechanical failures.
 
 ## Data Description
+- **Train Data**: 53 features are available for training, excluding ID variables.
+- **Test Data**: A subset of 18 features is used for evaluation.
+- **Class Imbalance**: The data is highly imbalanced with a ratio of 8.54% poor-quality oil to 91.46% good-quality oil.
 
-During model training, all 53 features except the given ID variables can be used. However, during the diagnostic test, only a subset of 18 features, excluding the ID variables, can be used. In this Dacon competition, the Y_LABEL variable in the test data is not provided, so the train data is divided into train data, validation data, and test data in a ratio of 6.4:1.6:2. The data classes have a severe class imbalance, with a ratio of 8.54:91.46 between cases where the lubricating oil quality is poor and cases where the lubricating oil quality is good.
+The full details of the dataset, including feature descriptions, can be found in the data folder provided.
 
-Please refer to the data description document in the data folder for detailed definitions and meanings of each variable.
+### Data Splitting
+The training data was split into three sets:
+- **Training Set**: 64%
+- **Validation Set**: 16%
+- **Test Set**: 20%
 
 ## Experimental Method
 
-Due to the severe class imbalance in the data, class weights and four sampling techniques (SMOTE, SMOTE-Tomek, ADASYN, Random Undersampling) were applied. Additionally, a unique aspect of this competition is that the number of variables in the train and test data differs. To address this issue, Knowledge Distillation was applied.
+### Step 1: Data Preprocessing
+- **Variable Exclusion**: Removed irrelevant variables like ID, Component_ARBITRARY (string data), and Year. 
+- **Missing Data Handling**: Removed columns with more than 15% missing values.
+- **Feature Scaling**: MinMaxScaler was used instead of StandardScaler due to the non-normal distribution of the data.
 
-Process: Step 1: Data Load and Simple Preprocessing
+### Step 2: Addressing Class Imbalance
+Given the severe class imbalance, the following techniques were applied:
+- **Class Weights**: Adjusted for imbalanced data.
+- **Sampling Techniques**: Tested four sampling methods: SMOTE, SMOTE-Tomek, ADASYN, and Random Undersampling.
 
-Use only the train.csv data for the process. Remove ID variables and Component_ARBITRARY, which are string data. Remove the Year variable (Year represents the diagnostic year and does not affect the lubricating oil quality). Remove columns with more than 15% missing values. Split the train data into train data, validation data, and test data in a ratio of 6.4:1.6:2. Exclude 16 test data variables (ID, Component_ARBITRARY, Year) and the AL variable, which is suitable for classifying lubricating oil quality, from the train data. Use MinMaxScaler instead of StandardScaler due to the data not following a normal distribution.
+### Step 3: Model Development
+- **Teacher Model**: Built using LightGBMClassifier.
+- **Student Model**: Built using LightGBMRegressor and applied Knowledge Distillation.
 
-Step 2: Address Class Imbalance Issue with Class Weights and Sampling Techniques (as shown in the provided table)
+Both models were trained with the same parameters to ensure a fair comparison.
 
-Step 3: Create a Teacher Model using LightGBMClassifier Set the parameters of the LightGBMClassifier model the same for each case to facilitate comparison.
+### Step 4: Model Evaluation
+The models were evaluated using the Macro F-1 Score. The most effective approach was applying class weights without sampling techniques.
 
-Step 4: Create a Student Model using LightGBMRegressor Set the parameters of the LightGBMRegressor model the same for each case to facilitate comparison.
+- **Best Validation Score**: Achieved with a threshold of 0.35 using class weights only.
+- **Best Test Score**: Achieved with a threshold of 0.3 using class weights only.
 
-Step 5: Compare the Macro F-1 Score values of the models for each case (as shown in the provided image)
+## Results
+The LightGBMClassifier model, using class weights, achieved the highest Macro F-1 Score, outperforming other models that incorporated sampling techniques.
 
-
-- Applying class weights without using sampling techniques was the most effective approach.
-- The highest Macro F-1 Score was achieved with a threshold of 0.35 and only using class weights for the validation data. For the test data, the highest Macro F-1 Score was achieved with a threshold of 0.3.
-
-
+## Conclusion
+Using only class weights without additional sampling techniques yielded the best classification results for lubricating oil quality. Knowledge Distillation was successfully applied to handle the disparity in feature sets between the training and testing data.
